@@ -13,20 +13,20 @@ public class Startup implements CommandLineRunner {
     }
 
     public void printAdminDetails() {
-        System.out.println("\n---------------------------------------------------------- \n" +
-                "Admin details: (Work in Progress) \n" +
-                "Username:  admin \n" +
-                "Password:  admin \n" +
-                "----------------------------------------------------------");
+        System.out.println("\n  Admin details: (Work in Progress) \n" +
+                "---------------------------------------------------------- \n" +
+                "   Username:  admin \n" +
+                "   Password:  admin \n" +
+                "----------------------------------------------------------\n");
     }
 
     public void printExampleCurl() {
-        System.out.println("\n---------------------------------------------------------- \n" +
-                "Example Curl commands: (Work in Progress) \n" +
-                "List all blogs:        curl -X GET localhost:8080/blogs/ \n" +
-                "Adding:                curl -X POST -H \"Content-type: application/json\" \n" +
-                "Deleting by id:        curl -X DELETE localhost:8080/blogs/id/ \n" +
-                "Deleting all entries:  curl -X DELETE localhost:8080/blogs/ \n" +
+        System.out.println("\n  Example Curl commands: (Work in Progress)\n" +
+                "---------------------------------------------------------- \n" +
+                "   List all blogs:        curl -X GET localhost:8080/blogs/ \n" +
+                "   Adding:                curl -X POST -H \"Content-Type:application/json\" title description \n" +
+                "   Deleting by id:        curl -X DELETE localhost:8080/blogs/id/ \n" +
+                "   Deleting all entries:  curl -X DELETE localhost:8080/blogs/ \n" +
                 "----------------------------------------------------------");
     }
 }

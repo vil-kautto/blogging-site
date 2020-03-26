@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>fi.tuni.TemporaryName</groupId>
 	<artifactId>webapp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>webapp</name>
 	<description>blogging application for blog hosting</description>
 
@@ -30,7 +30,7 @@
             <scope>runtime</scope>
             <version>1.4.199</version>
         </dependency>
-        
+
         <!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,10 +57,55 @@
 
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<mainClass>fi.tuni.TemporaryName.webapp.WebappApplication</mainClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>fi.tuni.TemporaryName.webapp.WebappApplication</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
+
 		</plugins>
 	</build>
 
