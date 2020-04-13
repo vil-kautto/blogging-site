@@ -1,0 +1,8 @@
+.blog {
+    padding: 25px 25px;
+    border-radius: 25px;
+    margin-left: 15px;
+    width: fit-content;
+    height: fit-content;
+    background-color: aliceblue;
+}
