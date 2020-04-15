@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>fi.tuni.TemporaryName</groupId>
 	<artifactId>webapp</artifactId>
-	<version>0.0.1</version>
+	<version>2020.04.16</version>
 	<name>webapp</name>
 	<description>blogging application for blog hosting</description>
 

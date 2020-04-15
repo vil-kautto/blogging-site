@@ -19,8 +19,8 @@ public class WebappApplication {
 	@Autowired
 	BlogDatabase blogDatabase;
 
-	// Adds 5 Blogs to the database upon creation, set false to disable
-	private boolean includeTemplate = true;
+	// Adds 3 Blogs to the database upon creation, set false to disable
+	private boolean includeTemplate = false;
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebappApplication.class, args);
@@ -38,7 +38,7 @@ public class WebappApplication {
 	 */
 	@PostConstruct
 	public void generateTemplate() {
-		System.out.println("Adding 5 sample entries to database");
+		System.out.println("Adding 3 sample entries to database");
 		blogDatabase.save(new Blog("Example blog 1", "Sample text"));
 		blogDatabase.save(new Blog("Example blog two", "Now with more text"));
 		blogDatabase.save(new Blog("I am title", "I am text"));

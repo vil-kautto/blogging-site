@@ -37,7 +37,7 @@ public class Blog {
         this.body = "Empty Description";
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a zzz");
+                new SimpleDateFormat("yyyy-MM-dd hh:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 
@@ -119,11 +119,11 @@ public class Blog {
      */
     @Override
     public String toString() {
-        return "Blog{" +
+        return "{" +
                 "id=" + id +
                 ", title=" + title +
                 ", body=" + body +
                 ", comments=" + comments +
-                '}';
+                "}";
     }
 }

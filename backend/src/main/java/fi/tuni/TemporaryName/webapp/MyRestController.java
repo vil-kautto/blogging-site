@@ -2,6 +2,7 @@ package fi.tuni.TemporaryName.webapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * RestController for blog hosting application
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
  * @version 2020.04.16
  * @since 2020.03.26
  */
+
+@CrossOrigin
 @RestController
 public class MyRestController {
 

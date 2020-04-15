@@ -43,11 +43,11 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" +
+        return "{" +
                 "id=" + this.id +
                 ", title=" + this.author +
                 ", body=" + this.body +
                 ", datetime=" + this.datetime +
-                '}';
+                "}";
     }
 }
