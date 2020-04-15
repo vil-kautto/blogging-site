@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Blog POJO, which stores Blog's object data
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.03.26
+ * @version 2020.04.16
  * @since 2020.03.26
  */
 @Entity
@@ -25,15 +25,16 @@ public class Blog {
     @GeneratedValue
     private int id;
     private String title;
-    private String desc;
+    private String body;
     private String datetime;
+    private Comment[] comments;
 
     /**
-     * Blank constructor for Blog objects
+     * Default constructor for Blog objects
      */
     public Blog() {
         this.title = "Empty title";
-        this.desc = "Empty Description";
+        this.body = "Empty Description";
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
                 new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a zzz");
@@ -41,14 +42,14 @@ public class Blog {
     }
 
     /**
-     * Constructor for blog object with parameters
+     * Constructor for blog object with parameters, mainly used in testing
      * takes the blog's title and description as parameters
      * @param title blog title
-     * @param desc blog Description - the main text box
+     * @param body blog Description - the main text box
      */
-    public Blog(String title, String desc) {
+    public Blog(String title, String body) {
         this.title = title;
-        this.desc = desc;
+        this.body = body;
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
                 new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a zzz");
@@ -80,19 +81,19 @@ public class Blog {
     }
 
     /**
-     * Sets a custom description for Blog
-     * @param desc
+     * Sets a custom text for Blog
+     * @param body
      */
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDesc(String body) {
+        this.body = body;
     }
 
     /**
      * Blog description's getter Method
      * @return description of the blog
      */
-    public String getDesc() {
-        return desc;
+    public String getBody() {
+        return body;
     }
 
     /**
@@ -103,6 +104,15 @@ public class Blog {
         return datetime;
     }
 
+    public void setComments(Comment[] comments) {
+        this.comments = comments;
+    }
+
+    public Comment[] getComments() {
+        return comments;
+    }
+
+
     /**
      * ToString override
      * @return String with blog object data
@@ -112,7 +122,8 @@ public class Blog {
         return "Blog{" +
                 "id=" + id +
                 ", title=" + title +
-                ", desc=" + desc +
+                ", body=" + body +
+                ", comments=" + comments +
                 '}';
     }
 }
