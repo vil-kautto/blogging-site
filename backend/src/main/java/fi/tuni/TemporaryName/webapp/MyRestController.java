@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * RestController for ("Weblogax?") blog hosting application
+ * RestController for blog hosting application
  * Handles incoming requests and manages changes in the database
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.03.26
+ * @version 2020.04.16
  * @since 2020.03.26
  */
 @RestController
@@ -17,9 +17,6 @@ public class MyRestController {
     @Autowired
     BlogDatabase blogDatabase;
 
-    // Adds 5 Blogs to the database upon creation, set false to disable
-    private boolean includeTemplate = true;
-
     /**
      * Lists all the blogs in the database
      * url: localhost:8080/blogs/
@@ -27,9 +24,6 @@ public class MyRestController {
      */
     @RequestMapping("blogs")
     public Iterable<Blog> getBlogs() {
-        if(includeTemplate) {
-            generateTemplate();
-        }
         return blogDatabase.findAll();
     }
 
@@ -46,16 +40,12 @@ public class MyRestController {
 
     /**
      * Adds a blog to the database
-     * Usage: curl -H "Content-Type: application/json" \
-     *   --request POST \
-     *   --data '{"title":"<Custom title>","desc":"<Custom description>"}' \
-     *   http://localhost:3000/blogs"
+     * curl -H "Content-type: application/json" -X POST -d "{\"title\": \"Blog Title\", \"body\": \"This is the body\"}",  http://localhost:8080/blogs
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.POST)
-    public void saveBlog(@RequestBody String title, String desc) {
-        Blog b = new Blog(title, desc);
-        blogDatabase.save(b);
+    public void saveBlog(@RequestBody Blog b) {
         System.out.println("New database entry was created");
+        blogDatabase.save(b);
     }
 
     /**
@@ -78,17 +68,6 @@ public class MyRestController {
         blogDatabase.deleteById(blogId);
     }
 
-    /**
-     * GenerateTemplate generates 5 example blogs upon startup
-     * Can be controlled on by changing includeTemplate variable at the start of this file
-     */
-    public void generateTemplate() {
-        System.out.println("Adding 5 sample entries to database");
-        blogDatabase.save(new Blog("Example blog 1", "Sample text"));
-        blogDatabase.save(new Blog("Example blog 2", "Now with some text"));
-        blogDatabase.save(new Blog("Example blog 3", "Now with more text"));
-        blogDatabase.save(new Blog("Example blog 4", "Now with more text"));
-        blogDatabase.save(new Blog("Example blog 5", "Now with more text"));
-    }
+
 
 }
