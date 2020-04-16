@@ -1,16 +1,18 @@
 import React from 'react';
 import './Blog.css'
 
-
-const Blog = (props) => {
-    return (
-        <div className="blog">
-            <h2>Title</h2>
-            <h3>Written by</h3>
-            <p>Here comes the blog text</p>
-            <h3>Date</h3>
-        </div>
-    );
+class Blog extends React.Component {
+    render() {
+        return (
+            <div className="blog">
+                <h2>{this.props.title}</h2>
+                <h3>Author {this.props.id}</h3>
+                <p>{this.props.body}</p>
+                <p>Created: {this.props.datetime}</p>
+            </div>
+        );
+    }
+    
 }
 
 export default Blog;

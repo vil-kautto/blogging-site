@@ -22,17 +22,19 @@ public class MyRestController {
 
     /**
      * Lists all the blogs in the database
-     * url: localhost:8080/blogs/
+     * url: http://localhost:8080/blogs/
      * @return returns all the blogs contained in the database
      */
     @RequestMapping("blogs")
     public Iterable<Blog> getBlogs() {
+
+        System.out.println("Returning all database entries");
         return blogDatabase.findAll();
     }
 
     /**
      * Returns a blog based on blog's id
-     * url: localhost:8080/blogs/{id}
+     * url: http://localhost:8080/blogs/{id}
      * @return returns a blog with specified id
      */
     @RequestMapping("blogs/{id}")
@@ -42,8 +44,8 @@ public class MyRestController {
     }
 
     /**
-     * Adds a blog to the database
-     * curl -H "Content-type: application/json" -X POST -d "{\"title\": \"Blog Title\", \"body\": \"This is the body\"}",  http://localhost:8080/blogs
+     * Adds a blog to the database by sending a post request
+     * url: http://localhost:8080/blogs
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.POST)
     public void saveBlog(@RequestBody Blog b) {
@@ -53,7 +55,7 @@ public class MyRestController {
 
     /**
      * Deletes all the blogs from the database
-     * Usage: curl -X DELETE http://localhost:8080/blogs
+     * url: http://localhost:8080/blogs
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.DELETE)
     public void deleteAll() {
@@ -63,6 +65,7 @@ public class MyRestController {
 
     /**
      * Deletes a blog based on given id
+     * url: http://localhost:8080/blogs/id
      * @param blogId id of the blog that should be deleted
      */
     @RequestMapping(value ="blogs/{id}", method = RequestMethod.DELETE)

@@ -28,7 +28,7 @@ public class Comment {
         this.body = "Empty Comment";
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a zzz");
+                new SimpleDateFormat("dd.MM.yyyy hh:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 
@@ -37,7 +37,7 @@ public class Comment {
         this.body = body;
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a zzz");
+                new SimpleDateFormat("dd.MM.yyyy hh:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 

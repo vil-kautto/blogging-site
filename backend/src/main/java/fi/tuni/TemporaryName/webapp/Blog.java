@@ -13,7 +13,6 @@ import java.util.Date;
 @Entity
 @Table(name="Blogs")
 public class Blog {
-
     /**
      * Blog contains id, title, desc and datetime for data and time management
      * id - Automatically incremented value, used for identifying blogs
@@ -37,7 +36,7 @@ public class Blog {
         this.body = "Empty Description";
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                new SimpleDateFormat("dd.MM.yyyy hh:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 
@@ -52,7 +51,7 @@ public class Blog {
         this.body = body;
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a zzz");
+                new SimpleDateFormat("dd.MM.yyyy hh:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 
