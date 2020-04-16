@@ -70,9 +70,10 @@ public class MyRestController {
      * @param blogId id of the blog that should be deleted
      */
     @RequestMapping(value ="blogs/{blogId}", method = RequestMethod.DELETE)
-    public void deleteBlog(@PathVariable long blogId) {
+    public void deleteBlog(@PathVariable int blogId) {
         System.out.println("Deleted a blog with id of  " + blogId);
-        blogDatabase.deleteById(blogId);
+        long blog = (long) blogId;
+        blogDatabase.deleteById(blog);
     }
 
 }
