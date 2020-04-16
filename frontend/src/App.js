@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8080/blogs')
+    fetch('http://localhost:8080/blogs')
     .then(res => res.json())
     .then((data) => {
       this.setState({ blogs: data })

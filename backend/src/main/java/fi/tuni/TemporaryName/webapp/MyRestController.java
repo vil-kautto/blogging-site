@@ -1,6 +1,7 @@
 package fi.tuni.TemporaryName.webapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -64,16 +65,14 @@ public class MyRestController {
     }
 
     /**
-     * Deletes a blog based on given id
-     * url: http://localhost:8080/blogs/id
+     * Deletes a blog based on given blogId
+     * url: http://localhost:8080/blogs/blogId
      * @param blogId id of the blog that should be deleted
      */
-    @RequestMapping(value ="blogs/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value ="blogs/{blogId}", method = RequestMethod.DELETE)
     public void deleteBlog(@PathVariable long blogId) {
-        System.out.println("deleted a blog with id of  " + blogId);
+        System.out.println("Deleted a blog with id of  " + blogId);
         blogDatabase.deleteById(blogId);
     }
-
-
 
 }

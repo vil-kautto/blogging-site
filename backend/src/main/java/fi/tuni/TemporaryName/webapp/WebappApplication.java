@@ -20,7 +20,7 @@ public class WebappApplication {
 	BlogDatabase blogDatabase;
 
 	// Adds 3 Blogs to the database upon creation, set false to disable
-	private boolean includeTemplate = false;
+	private boolean includeTemplate = true;
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebappApplication.class, args);
