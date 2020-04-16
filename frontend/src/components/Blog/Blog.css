@@ -1,11 +1,14 @@
 .blog {
     padding: 25px 25px;
     border-color: black;
-    border-radius: 25px;
+    border-radius: 15px;
     margin: 15px;
-    width: fit-content;
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 75%;
     height: fit-content;
     background-color: aliceblue;
-    float: left;
-    
+}
+.h2 {
+    height: 20px;
 }
