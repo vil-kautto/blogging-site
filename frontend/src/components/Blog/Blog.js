@@ -9,6 +9,8 @@ class Blog extends React.Component {
                 <h3>Author {this.props.id}</h3>
                 <p>{this.props.body}</p>
                 <p>Created: {this.props.datetime}</p>
+                <button className="blog_button_edit">Edit</button>
+                <button className="blog_button_delete">Delete</button>
             </div>
         );
     }
