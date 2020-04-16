@@ -1,5 +1,6 @@
 import React from 'react';
 import './Blog.css'
+import Button from '@material-ui/core/Button';
 
 class Blog extends React.Component {
     edit = () => {
@@ -23,8 +24,8 @@ class Blog extends React.Component {
                 <h3>Author {this.props.id}</h3>
                 <p>{this.props.body}</p>
                 <p>Created: {this.props.datetime}</p>
-                <button className="blog_button_edit" onClick={this.edit}>Edit</button>
-                <button className="blog_button_delete" onClick={this.delete}>Delete</button>
+                <Button className="blog_button_edit" onClick={this.edit} color="primary" variant="contained">Edit</Button>
+                <Button className="blog_button_delete" onClick={this.edit} color="Secondary" variant="contained">Delete</Button>
             </div>
         );
     }

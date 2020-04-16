@@ -9,6 +9,6 @@ import java.util.List;
  * @version 2020.03.26
  * @since 2020.03.26
  */
-public interface BlogDatabase extends CrudRepository<Blog, Long> {
+public interface BlogDatabase extends CrudRepository<Blog, Integer> {
     Blog findById(int id);
 }

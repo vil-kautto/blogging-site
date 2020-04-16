@@ -11,15 +11,9 @@
 }
 
 .blog button {
-    background-color: #008CBA;
     border: none;
-    color: white;
-    padding: 15px 32px;
-    margin-left: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
+    margin-right: 5px
 }
 
 .h2 {

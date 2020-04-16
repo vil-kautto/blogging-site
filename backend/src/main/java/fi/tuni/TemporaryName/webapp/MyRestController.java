@@ -72,8 +72,7 @@ public class MyRestController {
     @RequestMapping(value ="blogs/{blogId}", method = RequestMethod.DELETE)
     public void deleteBlog(@PathVariable int blogId) {
         System.out.println("Deleted a blog with id of  " + blogId);
-        long blog = (long) blogId;
-        blogDatabase.deleteById(blog);
+        blogDatabase.deleteById(blogId);
     }
 
 }
