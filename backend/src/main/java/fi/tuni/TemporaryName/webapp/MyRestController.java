@@ -28,9 +28,9 @@ public class MyRestController {
      */
     @RequestMapping("blogs")
     public Iterable<Blog> getBlogs() {
-
+        // finds all the blogs in the database and return all of them in reversed order
         System.out.println("Returning all database entries");
-        return blogDatabase.findAll();
+        return blogDatabase.findAllByOrderByIdDesc();
     }
 
     /**

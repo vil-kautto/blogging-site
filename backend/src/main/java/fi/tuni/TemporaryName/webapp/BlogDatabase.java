@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface BlogDatabase extends CrudRepository<Blog, Integer> {
     Blog findById(int id);
+    List <Blog> findAllByOrderByIdDesc();
 }

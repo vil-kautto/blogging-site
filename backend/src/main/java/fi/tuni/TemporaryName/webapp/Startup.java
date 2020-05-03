@@ -16,6 +16,16 @@ public class Startup implements CommandLineRunner {
         printExampleCurl();
     }
 
+    public void printTeamDetails() {
+        System.out.println("\n  Example Curl commands: (Work in Progress)\n" +
+                "--------------+---------------------+------------- \n" +
+                "--------------+ Team TeamporaryName +------------- \n" +
+                "+-------------+---------------------+------------- \n" +
+                "+  Blog TeamporaryName - A blog application      + \n" +
+                "+  Made by Ville Kautto & Miika Minkkinen        + \n" +
+                "--------------------------------------------------");
+    }
+
     public void printAdminDetails() {
         System.out.println("\n  Admin details: (Work in Progress) \n" +
                 "---------------------------------------------------------- \n" +
