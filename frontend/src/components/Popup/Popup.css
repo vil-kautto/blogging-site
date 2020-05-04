@@ -1,0 +1,26 @@
+.blog {
+    padding: 25px 25px;
+    border-color: black;
+    border-radius: 15px;
+    margin: 15px;
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 75%;
+    height: fit-content;
+    background-color: aliceblue;
+}
+
+.blog:hover {
+    border-color: black;
+    
+}
+
+.blog button {
+    border: none;
+    font-size: 16px;
+    margin-right: 5px
+}
+
+.h2 {
+    height: 20px;
+}

@@ -29,7 +29,6 @@ class Blog extends React.Component {
         return (
             <div className="blog" id={this.props.id}>
                 <h2>{this.props.title}</h2>
-                <h3>Author {this.props.id}</h3>
                 <p>{this.props.body}</p>
                 <p>Created by Admin on {this.props.datetime}</p>
                 <Button className="blog_button_edit" onClick={this.edit} color="primary" variant="contained">Edit</Button>

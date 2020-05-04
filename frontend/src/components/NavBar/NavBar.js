@@ -1,52 +1,37 @@
 import React from 'react';
-import './NavBar.css'
-import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Popup from '../Popup/Popup'
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import Popup from '../Popup/Popup';
 
-class NavBar extends React.Component {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
-  newBlog() {
-    console.log("Adding a new Blank Blog");
-    
-    const data = { title:'Empty Title', body:'Empty blog with no text.' }
+export default function ButtonAppBar() {
+  const classes = useStyles();
 
-    fetch("http://localhost:8080/blogs/", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(res => res.json())
-    .then(res => console.log("Success"))
-    .catch(error => console.error("Error " + error))
-  }
-
-  render() {
-    return (
-      <div className="navbar">
-        <nav className="navbar-nav">
-          <ul>
-            <li>
-              <a href="">Browse Blogposts</a>
-            </li>
-            <li>
-              <a className="newBlogButton" onClick={this.newBlog}>Create new empty blogpost</a>
-            </li>
-            <li>
-              <form className="search-form">
-                <input className="search-bar" type="text"/>
-                <Button variant="contained" color="primary">
-                  Search
-                </Button>
-              </form>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <AppBar position="fixed" color="default" >
+        <Toolbar className="navbar">
+          <Link variant="h6" href="#" className={classes.title}>
+            The TemporaryBlog
+          </Link>
+          <Popup className={classes.title}/>
+          
+          
+          <Button variant="outlined" color="transparent">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
-
-export default NavBar;

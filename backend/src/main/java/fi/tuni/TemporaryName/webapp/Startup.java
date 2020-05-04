@@ -21,27 +21,29 @@ public class Startup implements CommandLineRunner {
         System.out.println("\n" +
                 "--------------+---------------------+------------- \n" +
                 "--------------+ Team TeamporaryName +------------- \n" +
-                "+-------------+---------------------+------------- \n" +
-                "+  Blog TeamporaryName - A blog application      + \n" +
-                "+  Made by Ville Kautto & Miika Minkkinen        + \n" +
-                "--------------------------------------------------");
+                "+-------------+---------------------+------------+ \n" +
+                "|  Blog TeamporaryName - A blog application      | \n" +
+                "|  Made by Ville Kautto & Miika Minkkinen        | \n" +
+                "+------------------------------------------------+");
     }
 
     public void printAdminDetails() {
         System.out.println("\n  Admin details: (Work in Progress) \n" +
-                "---------------------------------------------------------- \n" +
-                "   Username:  admin \n" +
-                "   Password:  admin \n" +
-                "----------------------------------------------------------\n");
+                "+--------------------------------------------------------+ \n" +
+                "|  Username:  admin                                      | \n" +
+                "|  Password:  admin                                      | \n" +
+                "+--------------------------------------------------------+\n");
     }
 
     public void printExampleCurl() {
-        System.out.println("\n  Example Curl commands: \n" +
+        System.out.println("\nExample Curl commands: \n" +
                 "---------------------------------------------------------- \n" +
-                "   List all blogs:        curl -X GET localhost:8080/blogs \n" +
-                "   Adding:                curl -X POST -H \"Content-Type:application/json\" title description \n" +
-                "   Deleting by id:        curl -X DELETE localhost:8080/blogs/id \n" +
-                "   Deleting all entries:  curl -X DELETE localhost:8080/blogs \n" +
+                "List all blogs: curl -X GET localhost:8080/blogs \n" +
+                "Adding:         curl -H \"Content-Type: application/json\"" +
+                "                   -X POST --data \"{\"title\": \"test\", \"body\": \"test\"}\"" +
+                "                   http://localhost:8080/blogs \n" +
+                "Deleting by id: curl -X DELETE localhost:8080/blogs/id \n" +
+                "Empty database: curl -X DELETE localhost:8080/blogs \n" +
                 "----------------------------------------------------------");
     }
 }

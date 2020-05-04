@@ -51,7 +51,6 @@ public class MyRestController {
      * Can be controlled on by changing includeTemplate variable at the start of this file
      */
     public void generateTemplate() {
-        System.out.println("Adding 3 sample entries to database");
         blogDatabase.save(new Blog("Example blog 1", "Sample text"));
         blogDatabase.save(new Blog("Example blog two", "Now with more text"));
         blogDatabase.save(new Blog("I am title", "I am text"));
@@ -73,9 +72,11 @@ public class MyRestController {
      * url: http://localhost:8080/blogs
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.POST)
-    public void saveBlog(@RequestBody Blog b) {
+    public String saveBlog(@RequestBody Blog b) {
         System.out.println("New database entry was created");
         blogDatabase.save(b);
+
+        return "A new blog was created";
     }
 
     /**
@@ -83,13 +84,15 @@ public class MyRestController {
      * url: http://localhost:8080/blogs
      */
     @RequestMapping(value = "/blogs/{blogId}", method = RequestMethod.POST)
-    public void editBlog(@RequestBody Blog b) {
+    public String editBlog(@RequestBody Blog b) {
         System.out.println("database entry was changed");
         Blog blog = blogDatabase.findById(b.getId());
         blog.setTitle(b.getTitle());
         blog.setBody(b.getBody());
         blog.setDatetime();
         blogDatabase.save(b);
+
+        return "Edited a blog with an id: " + blog.getId();
 
     }
 
@@ -98,9 +101,10 @@ public class MyRestController {
      * url: http://localhost:8080/blogs
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.DELETE)
-    public void deleteAll() {
+    public String deleteAll() {
         blogDatabase.deleteAll();
         System.out.println("All database entries deleted");
+        return "All database entries deleted";
     }
 
     /**
@@ -109,9 +113,10 @@ public class MyRestController {
      * @param blogId id of the blog that should be deleted
      */
     @RequestMapping(value ="blogs/{blogId}", method = RequestMethod.DELETE)
-    public void deleteBlog(@PathVariable int blogId) {
+    public String deleteBlog(@PathVariable int blogId) {
         System.out.println("Deleted a blog with id of  " + blogId);
         blogDatabase.deleteById(blogId);
+        return "deleted a blog with an id: " + blogId;
     }
 
 }

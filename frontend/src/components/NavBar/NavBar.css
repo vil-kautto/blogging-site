@@ -3,42 +3,21 @@
     top: 0;
     width: 100%;
     height: fit-content;
-    background-color: #151515;
-    padding: 10px;
+    background-color: #FFAA12;
 }
 
-.navbar ul {
-    overflow: hidden;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar li {
-    float: left;
-}
-
-.navbar li a {
+.navbar Link {
     color: white;
     text-align: center;
     text-decoration: none;
-    display: block;
     padding: 14px 16px;
 }
 
-.navbar li form {
-    padding: 15px 20px;
-}
-
-.navbar li button {
+.navbar Button {
    margin-left: 10px
 }
 
-.navbar li a:hover {
-    background-color: #0c0c0c;
-}
-
-.search-form {
+.login {
     position: absolute;
     top: 0;
     right: 30px;
