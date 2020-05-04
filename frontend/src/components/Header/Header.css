@@ -2,24 +2,21 @@
     padding: 125px 0;
     margin: 0px;
     width: 100%;
-    align-items: center;
     background-color: aliceblue;
     background-image: url(header.png);
 }
-.header h1 {
+.header h1{
     background-color: #101010;
     width: fit-content;
     font-size: 45px;
-    float: center;
-    padding: 3px;
+    padding: 5px;
 }
 
 .header h3 {
     width: fit-content;
     font-size: 25px;
     background-color: #101010;
-    padding: 3px;
-    float: center;
+    padding: 5px;
 }
 
 .outlined {

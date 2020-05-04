@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import Toolbar from './components/Toolbar/Toolbar';
+import React from 'react'
+import './App.css'
+import NavBar from './components/NavBar/NavBar'
 import Header from './components/Header/Header'
 import Blog from './components/Blog/Blog'
 import Footer from './components/Footer/Footer'
@@ -25,7 +25,7 @@ class App extends React.Component {
     console.log(blogs)
     return (
       <div className="app">
-        <Toolbar/>
+        <NavBar/>
         <Header/>
         <div className="blogs">
           {blogs}
