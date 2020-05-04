@@ -21,7 +21,7 @@ public class Comment {
     private String datetime;
 
     /**
-     * Blank constructor for Blog objects
+     * Blank constructor for comment objects
      */
     public Comment() {
         this.author = "Anonymous";
@@ -37,7 +37,7 @@ public class Comment {
         this.body = body;
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("dd.MM.yyyy hh:mm");
+                new SimpleDateFormat("dd.MM.yyyy HH:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 

@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 public class Startup implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
+        printTeamDetails();
         printAdminDetails();
         printExampleCurl();
     }
 
     public void printTeamDetails() {
-        System.out.println("\n  Example Curl commands: (Work in Progress)\n" +
+        System.out.println("\n" +
                 "--------------+---------------------+------------- \n" +
                 "--------------+ Team TeamporaryName +------------- \n" +
                 "+-------------+---------------------+------------- \n" +
@@ -35,7 +36,7 @@ public class Startup implements CommandLineRunner {
     }
 
     public void printExampleCurl() {
-        System.out.println("\n  Example Curl commands: (Work in Progress)\n" +
+        System.out.println("\n  Example Curl commands: \n" +
                 "---------------------------------------------------------- \n" +
                 "   List all blogs:        curl -X GET localhost:8080/blogs \n" +
                 "   Adding:                curl -X POST -H \"Content-Type:application/json\" title description \n" +

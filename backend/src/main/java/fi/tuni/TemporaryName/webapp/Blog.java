@@ -36,7 +36,7 @@ public class Blog {
         this.body = "Empty Description";
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("dd.MM.yyyy hh:mm");
+                new SimpleDateFormat("dd.MM.yyyy HH:mm");
         this.datetime = dateFormat.format(currentDate);
     }
 
@@ -83,7 +83,7 @@ public class Blog {
      * Sets a custom text for Blog
      * @param body
      */
-    public void setDesc(String body) {
+    public void setBody(String body) {
         this.body = body;
     }
 
@@ -101,6 +101,17 @@ public class Blog {
      */
     public String getDatetime() {
         return datetime;
+    }
+
+    /**
+     * Updated blogs datetime upon editing
+     */
+    public void setDatetime() {
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat =
+                new SimpleDateFormat("dd.MM.yyyy hh:mm");
+        String date = dateFormat.format(currentDate);
+        this.datetime = date + "*edited*";
     }
 
     public void setComments(Comment[] comments) {
