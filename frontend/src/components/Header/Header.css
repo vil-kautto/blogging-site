@@ -3,7 +3,7 @@
     margin: 0px;
     width: 100%;
     background-color: aliceblue;
-    background-image: url(header.png);
+    background-image: url(header.jpeg);
 }
 .header h1{
     background-color: #101010;
@@ -23,6 +23,7 @@
     color: aliceblue;
     text-shadow: -2px -2px 0 #252525, 2px -2px 0 #252525, -2px 2px 0 #252525, 2px 2px 0 #252525;
     position: relative;
+    text-align: center;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
