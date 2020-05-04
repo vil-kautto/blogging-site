@@ -1,4 +1,4 @@
-.toolbar {
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -7,18 +7,18 @@
     padding: 10px;
 }
 
-.toolbar ul {
+.navbar ul {
     overflow: hidden;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.toolbar li {
+.navbar li {
     float: left;
 }
 
-.toolbar li a {
+.navbar li a {
     color: white;
     text-align: center;
     text-decoration: none;
@@ -26,17 +26,18 @@
     padding: 14px 16px;
 }
 
-.toolbar li form {
-    padding: 14px 16px;
+.navbar li form {
+    padding: 15px 20px;
 }
 
-.toolbar li button {
-   margin-left: 5px
+.navbar li button {
+   margin-left: 10px
 }
 
-.toolbar li a:hover {
+.navbar li a:hover {
     background-color: #0c0c0c;
 }
+
 .search-form {
     position: absolute;
     top: 0;

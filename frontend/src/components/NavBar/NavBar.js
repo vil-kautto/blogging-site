@@ -1,11 +1,14 @@
 import React from 'react';
-import './Toolbar.css'
+import './NavBar.css'
 import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import Popup from '../Popup/Popup'
 
-class Toolbar extends React.Component {
+class NavBar extends React.Component {
 
   newBlog() {
     console.log("Adding a new Blank Blog");
+    
     const data = { title:'Empty Title', body:'Empty blog with no text.' }
 
     fetch("http://localhost:8080/blogs/", {
@@ -16,14 +19,14 @@ class Toolbar extends React.Component {
       body: JSON.stringify(data),
     })
     .then(res => res.json())
-    .then(res => console.log("Success: " + res))
+    .then(res => console.log("Success"))
     .catch(error => console.error("Error " + error))
   }
 
   render() {
     return (
-      <div className="toolbar">
-        <nav className="toolbar-nav">
+      <div className="navbar">
+        <nav className="navbar-nav">
           <ul>
             <li>
               <a href="">Browse Blogposts</a>
@@ -46,4 +49,4 @@ class Toolbar extends React.Component {
   }
 }
 
-export default Toolbar;
+export default NavBar;
