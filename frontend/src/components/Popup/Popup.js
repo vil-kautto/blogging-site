@@ -10,9 +10,14 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default function Popup() {
   const [open, setOpen] = React.useState(false);
 
-  const newBlog = (title, body) => {
+  const [blogData, setBlogData] = React.useState({
+    blogTitle: '',
+    blogText: '',
+  });
+
+  const newBlog = () => {
     console.log("Adding a new Blog");
-    const data = { title:'title', body:'Empty blog with no text.' }
+    const data = { title: blogData.blogTitle, body: blogData.blogText }
 
     fetch("http://localhost:8080/blogs/", {
       method: "POST",
@@ -25,6 +30,7 @@ export default function Popup() {
     .then(res => console.log("Success"))
     .catch(error => console.error("Error " + error))
 
+    handleClose();
   }
 
   const handleClickOpen = () => {
@@ -32,8 +38,18 @@ export default function Popup() {
   };
 
   const handleClose = () => {
+    setBlogData({
+      blogTitle: '',
+      blogText: '',
+    });
+
     setOpen(false);
-    newBlog()
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    newBlog();
   };
 
   return (
@@ -42,7 +58,7 @@ export default function Popup() {
         Create a blog
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">create a new post</DialogTitle>
+        <DialogTitle id="form-dialog-title">Create a new post</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Fill the following information to publish a blog
@@ -51,6 +67,8 @@ export default function Popup() {
             autoFocus
             margin="dense"
             id="title"
+            value={blogData.blogTitle}
+            onChange={(event) => setBlogData({ ...blogData, blogTitle: event.target.value })}
             label="Title"
             type="email"
             fullWidth
@@ -59,13 +77,15 @@ export default function Popup() {
             autoFocus
             margin="dense"
             id="title"
-            label="Description"
+            value={blogData.blogText}
+            onChange={(event) => setBlogData({ ...blogData, blogText: event.target.value })}
+            label="Text"
             type="email"
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant="contained" color="primary">
+          <Button onClick={handleSubmit} variant="contained" color="primary">
             Publish
           </Button>
           <Button onClick={handleClose} variant="contained">
