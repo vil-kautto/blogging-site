@@ -1,6 +1,9 @@
 import React from 'react';
 import './Header.css'
 
+/**
+ * Controls the styling of the header object
+ */
 class Header extends React.Component {
     render() {
         return (

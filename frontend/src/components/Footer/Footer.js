@@ -1,6 +1,9 @@
 import React from 'react';
 import './Footer.css'
 
+/**
+ * Controls the styling of Footer object
+ */
 class Footer extends React.Component {
     render() {
         return (
@@ -9,7 +12,6 @@ class Footer extends React.Component {
             </div>
         );
     }
-    
 }
 
 export default Footer;
