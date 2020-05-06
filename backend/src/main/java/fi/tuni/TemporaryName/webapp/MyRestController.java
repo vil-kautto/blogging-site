@@ -70,10 +70,33 @@ public class MyRestController {
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.POST)
     public String saveBlog(@RequestBody Blog b) {
-        System.out.println("New database entry was created");
-        blogDatabase.save(b);
+        // Filtering inputs, that have too many characters
+        if(validateString(b.getTitle()) && validateString( b.getBody() )) {
+            blogDatabase.save(b);
+            System.out.println("New database entry was created");
+            return "A new blog was created";
+        } else if(!validateString( b.getTitle() )) {
+            System.out.println("Request denied, Title too long");
+            return "Given title is too long!";
+        } else if(!validateString( b.getBody() )) {
+            System.out.println("Request denied, Body too long");
+            return "Given Blog text is too long!";
+        } else {
+            return "Unknown error";
+        }
+    }
 
-        return "A new blog was created";
+    /**
+     * Checks if given text is too long, returns true when the text is valid
+     * @param text Either the blog's title or body
+     * @return The state of validated string
+     */
+    private boolean validateString(String text) {
+        if(text.length() < 255 ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -82,14 +105,27 @@ public class MyRestController {
      */
     @RequestMapping(value = "/blogs/{blogId}", method = RequestMethod.POST)
     public String editBlog(@PathVariable int blogId, @RequestBody Blog b) {
-        System.out.println("database entry was changed");
-        Blog blog = blogDatabase.findById(blogId);
-        blog.setTitle(b.getTitle());
-        blog.setBody(b.getBody());
-        blog.setDatetime();
-        blogDatabase.save(blog);
- 
-        return "Edited a blog with an id: " + blog.getId();
+        // Validating inputs, in case there are too many characters
+        if(validateString(b.getTitle()) && validateString( b.getBody() )) {
+
+            // Assign given values after validation and save the edited entry
+            Blog blog = blogDatabase.findById(blogId);
+            blog.setTitle(b.getTitle());
+            blog.setBody(b.getBody());
+            blog.setDatetime();
+            blogDatabase.save(blog);
+
+            System.out.println("Database entry was changed");
+            return "Edited a blog with an id: " + blog.getId();
+        } else if(!validateString( b.getTitle() )) {
+            System.out.println("Request denied, Title too long");
+            return "Given title is too long!";
+        } else if(!validateString( b.getBody() )) {
+            System.out.println("Request denied, Body too long");
+            return "Given Blog text is too long!";
+        } else {
+            return "Unknown error";
+        }
     }
 
     /**
@@ -100,7 +136,6 @@ public class MyRestController {
     public String deleteAll() {
         blogDatabase.deleteAll();
         System.out.println("All database entries deleted");
-
         return "All database entries deleted";
     }
 
@@ -113,7 +148,6 @@ public class MyRestController {
     public String deleteBlog(@PathVariable int blogId) {
         System.out.println("Deleted a blog with id of  " + blogId);
         blogDatabase.deleteById(blogId);
-
         return "deleted a blog with an id: " + blogId;
     }
 
