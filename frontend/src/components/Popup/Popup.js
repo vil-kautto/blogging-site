@@ -50,6 +50,7 @@ export default function Popup() {
     event.preventDefault();
 
     newBlog();
+    setTimeout(() => window.location.reload());
   };
 
   return (

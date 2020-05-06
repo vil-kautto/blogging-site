@@ -58,6 +58,7 @@ const EditPopup = (props) => {
 
    const handleConfirm = () => {
     postEditedBlog();
+    setTimeout(() => window.location.reload());
   }
 
   return (
