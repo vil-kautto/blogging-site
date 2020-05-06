@@ -1,6 +1,6 @@
 import React from 'react';
 import './Blog.css'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,25 +19,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const EditPopup = (props) => {
   const classes = useStyles();
   //const [open, setOpen] = React.useState(false);
   //const { onClose, open } = props;
   const [blogData, setBlogData] = React.useState({
-    blogTitle: '',
-    blogText: '',
+    blogTitle: props.blogTitle,
+    blogText: props.blogText,
   })
 
+  console.log("http://localhost:8080/blogs/" + props.blogId);
+
   const handleClose = () => {
-    props.onClose(props);
+    props.onClose();
   }
 
-  const handleConfirm = () => {
-    props.onClose(blogData);
+  const postEditedBlog = () => {
+    console.log("Adding a new Blog");
+    console.log("Blog's title: " + blogData.blogTitle);
+    console.log("Blog's text contents: " + blogData.blogText);
+
+    const url = "http://localhost:8080/blogs/" + props.blogId;
+    const data = { title: blogData.blogTitle, body: blogData.blogText }
+  
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(res => console.log("Success"))
+    .catch(error => console.error("Error " + error))
+  
+    handleClose();
   }
 
-  const handleChange = (event) => {
-
+   const handleConfirm = () => {
+    postEditedBlog();
   }
 
   return (
@@ -97,7 +119,7 @@ const Blog = (props) => {
     setOpen(true);
   }
 
-  const handleClose = (editData) => {
+  const handleClose = () => {
     console.log("handleClose")
     setOpen(false);
   }
@@ -130,7 +152,7 @@ const Blog = (props) => {
       <p>{props.body}</p>
       <p>Created by Admin on {props.datetime}</p>
       <Button className="blog_button_edit" onClick={handleClickOpen} color="primary" variant="contained">Edit</Button>
-      <EditPopup open={open} onClose={handleClose} blogTitle={props.title} blogText={props.body} />
+      <EditPopup open={open} onClose={handleClose} blogTitle={props.title} blogText={props.body} blogId={props.id} />
       <Button className="blog_button_delete" onClick={deleteBlog} color="secondary" variant="contained">Delete</Button>
     </div>
   );

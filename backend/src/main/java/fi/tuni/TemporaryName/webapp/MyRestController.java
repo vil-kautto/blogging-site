@@ -80,20 +80,19 @@ public class MyRestController {
     }
 
     /**
-     * Adds a blog to the database by sending a post request
-     * url: http://localhost:8080/blogs
+     * a Blog in the database by sending a post request to specified post
+     * url: http://localhost:8080/blogs/1
      */
     @RequestMapping(value = "/blogs/{blogId}", method = RequestMethod.POST)
-    public String editBlog(@RequestBody Blog b) {
+    public String editBlog(@PathVariable int blogId, @RequestBody Blog b) {
         System.out.println("database entry was changed");
-        Blog blog = blogDatabase.findById(b.getId());
+        Blog blog = blogDatabase.findById(blogId);
         blog.setTitle(b.getTitle());
         blog.setBody(b.getBody());
         blog.setDatetime();
-        blogDatabase.save(b);
-
+        //blogDatabase.save(b);
+ 
         return "Edited a blog with an id: " + blog.getId();
-
     }
 
     /**
