@@ -1,18 +1,15 @@
 package fi.tuni.TemporaryName.webapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
  * RestController for blog hosting application
  * Handles incoming requests and manages changes in the database
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.04.16
+ * @version 2020.05.06
  * @since 2020.03.26
  */
 
@@ -41,7 +38,7 @@ public class MyRestController {
             blogs = blogDatabase.findAllByOrderByIdDesc();
         }
 
-        //returning blogs
+        // returning blogs
         System.out.println("Returning all database entries");
         return blogs;
     }
@@ -90,7 +87,7 @@ public class MyRestController {
         blog.setTitle(b.getTitle());
         blog.setBody(b.getBody());
         blog.setDatetime();
-        //blogDatabase.save(b);
+        blogDatabase.save(blog);
  
         return "Edited a blog with an id: " + blog.getId();
     }
@@ -103,6 +100,7 @@ public class MyRestController {
     public String deleteAll() {
         blogDatabase.deleteAll();
         System.out.println("All database entries deleted");
+
         return "All database entries deleted";
     }
 
@@ -115,6 +113,7 @@ public class MyRestController {
     public String deleteBlog(@PathVariable int blogId) {
         System.out.println("Deleted a blog with id of  " + blogId);
         blogDatabase.deleteById(blogId);
+
         return "deleted a blog with an id: " + blogId;
     }
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * The startup class executes the code in this class upon database startup
- *  @version 2020.03.26
+ *  @version 2020.05.06
  *  @since 2020.03.26
  */
 @Component
@@ -39,9 +39,7 @@ public class Startup implements CommandLineRunner {
         System.out.println("\nExample Curl commands: \n" +
                 "---------------------------------------------------------- \n" +
                 "List all blogs: curl -X GET localhost:8080/blogs \n" +
-                "Adding:         curl -H \"Content-Type: application/json\"" +
-                "                   -X POST --data \"{\"title\": \"test\", \"body\": \"test\"}\"" +
-                "                   http://localhost:8080/blogs \n" +
+                "Adding:         curl -H \"Content-Type: application/json\" -X POST --data \"{\"title\": \"test\", \"body\": \"test\"}\" http://localhost:8080/blogs \n" +
                 "Deleting by id: curl -X DELETE localhost:8080/blogs/id \n" +
                 "Empty database: curl -X DELETE localhost:8080/blogs \n" +
                 "----------------------------------------------------------");

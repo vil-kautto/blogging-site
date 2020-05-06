@@ -19,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 const EditPopup = (props) => {
   const classes = useStyles();
   //const [open, setOpen] = React.useState(false);
@@ -37,7 +35,7 @@ const EditPopup = (props) => {
   }
 
   const postEditedBlog = () => {
-    console.log("Adding a new Blog");
+    console.log("Editing a blog");
     console.log("Blog's title: " + blogData.blogTitle);
     console.log("Blog's text contents: " + blogData.blogText);
 
@@ -52,7 +50,7 @@ const EditPopup = (props) => {
       body: JSON.stringify(data),
     })
     .then(res => res.json())
-    .then(res => console.log("Success"))
+    .then(res => console.log(res))
     .catch(error => console.error("Error " + error))
   
     handleClose();
@@ -91,12 +89,13 @@ const EditPopup = (props) => {
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} variant="contained">
-          Cancel
-                </Button>
         <Button onClick={handleConfirm} variant="contained" color="primary">
           OK
-                </Button>
+        </Button>
+        <Button onClick={handleClose} variant="contained">
+          Cancel
+        </Button>
+        
       </DialogActions>
     </Dialog>
   );
@@ -124,11 +123,6 @@ const Blog = (props) => {
     setOpen(false);
   }
 
-  const editBlog = () => {
-    console.log("Editing blog with id: " + props.title);
-
-  }
-
   const deleteBlog = () => {
     console.log("Deleting blog with id: " + props.id);
 
@@ -136,7 +130,7 @@ const Blog = (props) => {
       method: "DELETE",
     })
       .then(res => res.text())
-      .then(res => console.log("Success"))
+      .then(res => console.log(res))
       .then(removeFromUI)
   }
 
@@ -150,13 +144,12 @@ const Blog = (props) => {
     <div className="blog" id={props.id}>
       <h2>{props.title}</h2>
       <p>{props.body}</p>
-      <p>Created by Admin on {props.datetime}</p>
+      <p>Published by Admin, {props.datetime}</p>
       <Button className="blog_button_edit" onClick={handleClickOpen} color="primary" variant="contained">Edit</Button>
       <EditPopup open={open} onClose={handleClose} blogTitle={props.title} blogText={props.body} blogId={props.id} />
       <Button className="blog_button_delete" onClick={deleteBlog} color="secondary" variant="contained">Delete</Button>
     </div>
   );
-
 
 }
 

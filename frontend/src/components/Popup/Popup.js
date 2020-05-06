@@ -27,7 +27,7 @@ export default function Popup() {
       body: JSON.stringify(data),
     })
     .then(res => res.json())
-    .then(res => console.log("Success"))
+    .then(res => console.log(res))
     .catch(error => console.error("Error " + error))
 
     handleClose();

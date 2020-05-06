@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Blog POJO, which stores Blog's object data
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.04.16
+ * @version 2020.05.06
  * @since 2020.03.26
  */
 @Entity
@@ -51,8 +51,9 @@ public class Blog {
         this.body = body;
         Date currentDate = new Date();
         SimpleDateFormat dateFormat =
-                new SimpleDateFormat("dd.MM.yyyy hh:mm");
-        this.datetime = dateFormat.format(currentDate);
+                new SimpleDateFormat("dd.MM.yyyy HH:mm");
+         String date = dateFormat.format(currentDate);
+        this.datetime = "created on " + date;
     }
 
     /**
@@ -111,7 +112,7 @@ public class Blog {
         SimpleDateFormat dateFormat =
                 new SimpleDateFormat("dd.MM.yyyy hh:mm");
         String date = dateFormat.format(currentDate);
-        this.datetime = date + "*edited*";
+        this.datetime = "edited on " + date;
     }
 
     public void setComments(Comment[] comments) {
