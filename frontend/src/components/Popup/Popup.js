@@ -85,8 +85,10 @@ export default function Popup() {
             value={blogData.blogTitle}
             onChange={(event) => setBlogData({ ...blogData, blogTitle: event.target.value })}
             label="Title"
+            multiline
             variant="outlined"
             fullWidth
+            inputProps={{maxLength: 100}}
           />
           <TextField
             autoFocus
@@ -95,8 +97,11 @@ export default function Popup() {
             value={blogData.blogText}
             onChange={(event) => setBlogData({ ...blogData, blogText: event.target.value })}
             label="Text"
+            multiline
+            rows={5}
             variant="outlined"
             fullWidth
+            inputProps={{maxLength: 250}}
           />
         </DialogContent>
         <DialogActions>

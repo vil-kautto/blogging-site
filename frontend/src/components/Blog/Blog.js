@@ -87,11 +87,11 @@ const EditPopup = (props) => {
             id="editFieldTitle"
             label="Title"
             multiline
-            rowsMax={1}
             defaultValue={props.blogTitle}
             onChange={(event) => setBlogData({ ...blogData, blogTitle: event.target.value })}
             variant="outlined"
             fullWidth
+            inputProps={{maxLength: 100}}
             />
           <TextField
             id="editFieldBody"
@@ -102,6 +102,7 @@ const EditPopup = (props) => {
             onChange={(event) => setBlogData({ ...blogData, blogText: event.target.value })}
             variant="outlined"
             fullWidth
+            inputProps={{maxLength: 250}}
             />
         </div>
       </DialogContent>
@@ -149,6 +150,9 @@ const Blog = (props) => {
     setOpenEdit(false);
   }
 
+  /**
+   * handles delete confirmation window's closing
+   */
   const handleCloseDelete = () => {
     setOpenDelete(false);
   }
@@ -190,6 +194,7 @@ const Blog = (props) => {
       <Button className="blog_button_edit" onClick={handleClickOpenEdit} color="primary" variant="contained">Edit</Button>
       <EditPopup openEdit={openEdit} onCloseEdit={handleCloseEdit} blogTitle={props.title} blogText={props.body} blogId={props.id} />
       <Button className="blog_button_delete" onClick={handleClickOpenDelete} color="secondary" variant="contained">Delete</Button>
+      {/*Delete confirmation Alert*/}
       <Dialog open={openDelete} onClose={handleCloseDelete}>
         <DialogTitle id="deleteAlertTitle">Warning!</DialogTitle>
         <DialogContent>
