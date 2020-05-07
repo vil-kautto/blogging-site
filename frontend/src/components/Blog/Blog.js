@@ -199,18 +199,21 @@ const Blog = (props) => {
         <DialogTitle id="deleteAlertTitle">Warning!</DialogTitle>
         <DialogContent>
           <DialogContentText id="deleteAlertDescription">
-            Are you sure you want to delete blog: {props.title}?
-            <br/>
-            When deleted all data of the blog will be lost.
+            Are you sure you want to delete the following blog:
+            <br/><br/>
+            {props.title}?
+            <br/><br/>
+            All data of the blog will be lost permanently upon removal.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDelete} variant="contained" color={"primary"}>
-            <b>Cancel</b>
+          <Button onClick={deleteBlog} variant="contained" color="secondary">
+            <b>Delete</b>
           </Button>
-          <Button onClick={deleteBlog} variant="contained">
-            Delete
+          <Button onClick={handleCloseDelete} variant="contained">
+            Cancel
           </Button>
+          
         </DialogActions>
       </Dialog>
     </div>
