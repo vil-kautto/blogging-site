@@ -13,7 +13,7 @@ public class Startup implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         printTeamDetails();
-        printAdminDetails();
+       // printAdminDetails();
         printExampleCurl();
     }
 

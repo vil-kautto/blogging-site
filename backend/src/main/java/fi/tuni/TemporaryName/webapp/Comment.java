@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * ----- NOT USED -----
  * POJO for comments located within the blogs
  * @version 2020-05-07
  * @since 2020-04-16

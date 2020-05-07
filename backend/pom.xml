@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fi.tuni.TemporaryName</groupId>
-	<artifactId>webapp</artifactId>
+	<artifactId>tempBlog</artifactId>
 	<version>2020-05-07</version>
 	<name>temporaryBlog</name>
 	<description>A temporary blog for permanent self-hosting</description>

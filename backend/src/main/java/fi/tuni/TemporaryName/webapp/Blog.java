@@ -1,7 +1,5 @@
 package fi.tuni.TemporaryName.webapp;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -120,14 +118,22 @@ public class Blog {
         this.datetime = "edited on " + date;
     }
 
-    public void setComments(Comment[] comments) {
+    /**
+     * ----- NOT USED -----
+     * Attachs comments to the blogpost
+     * @param comments
+     */
+    public void setComments(Comment... comments) {
         this.comments = comments;
     }
 
+    /**
+     * ----- NOT USED -----
+     * Returns comments attached to the blog
+     */
     public Comment[] getComments() {
         return comments;
     }
-
 
     /**
      * ToString override
