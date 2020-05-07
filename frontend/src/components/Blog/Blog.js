@@ -37,8 +37,8 @@ const EditPopup = (props) => {
   /**
    * Handles events related to closing the editing window
    */
-  const handleClose = () => {
-    props.onClose();
+  const handleCloseEdit = () => {
+    props.onCloseEdit();
   }
 
   /**
@@ -63,13 +63,13 @@ const EditPopup = (props) => {
     .then(res => console.log(res))
     .catch(error => console.error("Error " + error))
   
-    handleClose();
+    handleCloseEdit();
   }
 
   /**
    * HandleConfirm submits the entered data to backend and refreshes the site after confirming
    */
-  const handleConfirm = () => {
+  const handleConfirmEdit = () => {
     postEditedBlog();
     setTimeout(() => window.location.reload(), 200);
   }
@@ -78,7 +78,7 @@ const EditPopup = (props) => {
    * Blog's editing window's structure
    */
   return (
-    <Dialog open={props.open} onClose={handleClose} aria-labelledby="form-dialog-title">
+    <Dialog open={props.openEdit} onClose={handleCloseEdit} aria-labelledby="form-dialog-title">
       <DialogTitle id="edit-popup-title">Edit a Blog</DialogTitle>
       <DialogContent>
         <DialogContentText>Edit Selected blog's name and contents.</DialogContentText>
@@ -106,10 +106,10 @@ const EditPopup = (props) => {
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleConfirm} variant="contained" color="primary">
+        <Button onClick={handleConfirmEdit} variant="contained" color="primary">
           <b>OK</b>
         </Button>
-        <Button onClick={handleClose} variant="contained">
+        <Button onClick={handleCloseEdit} variant="contained">
           Cancel
         </Button>
         
@@ -125,21 +125,32 @@ const EditPopup = (props) => {
  */
 const Blog = (props) => {
   console.log("Opened blog with id: " + props.title);
-  const [open, setOpen] = React.useState(false);
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
 
   /**
    * handles edit window's opening
    */
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenEdit = () => {
+    setOpenEdit(true);
+  }
+
+  /**
+   * handles delete confirmation window's opening
+   */
+  const handleClickOpenDelete = () => {
+    setOpenDelete(true);
   }
 
   /**
    * handles edit window's closing
    */
-  const handleClose = () => {
+  const handleCloseEdit = () => {
+    setOpenEdit(false);
+  }
 
-    setOpen(false);
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
   }
 
   /**
@@ -155,6 +166,8 @@ const Blog = (props) => {
       .then(res => res.text())
       .then(res => console.log(res))
       .then(removeFromUI)
+
+      handleCloseDelete();
   }
 
    /**
@@ -174,9 +187,27 @@ const Blog = (props) => {
       <h2>{props.title}</h2>
       <p>{props.body}</p>
       <p>Published by Admin, {props.datetime}</p>
-      <Button className="blog_button_edit" onClick={handleClickOpen} color="primary" variant="contained">Edit</Button>
-      <EditPopup open={open} onClose={handleClose} blogTitle={props.title} blogText={props.body} blogId={props.id} />
-      <Button className="blog_button_delete" onClick={deleteBlog} color="secondary" variant="contained">Delete</Button>
+      <Button className="blog_button_edit" onClick={handleClickOpenEdit} color="primary" variant="contained">Edit</Button>
+      <EditPopup openEdit={openEdit} onCloseEdit={handleCloseEdit} blogTitle={props.title} blogText={props.body} blogId={props.id} />
+      <Button className="blog_button_delete" onClick={handleClickOpenDelete} color="secondary" variant="contained">Delete</Button>
+      <Dialog open={openDelete} onClose={handleCloseDelete}>
+        <DialogTitle id="deleteAlertTitle">Warning!</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="deleteAlertDescription">
+            Are you sure you want to delete blog: {props.title}?
+            <br/>
+            When deleted all data of the blog will be lost.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDelete} variant="contained" color={"primary"}>
+            <b>Cancel</b>
+          </Button>
+          <Button onClick={deleteBlog} variant="contained">
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
