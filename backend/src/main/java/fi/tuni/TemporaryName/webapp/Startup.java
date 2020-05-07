@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * The startup class executes the code in this class upon database startup
- *  @version 2020.05.06
- *  @since 2020.03.26
+ *  @version 2020-05-07
+ *  @since 2020-03-26
  */
 @Component
 public class Startup implements CommandLineRunner {
@@ -17,6 +17,9 @@ public class Startup implements CommandLineRunner {
         printExampleCurl();
     }
 
+    /**
+     * PrintTeamDetails prints the team members names to the screen
+     */
     public void printTeamDetails() {
         System.out.println("\n" +
                 "--------------+---------------------+------------- \n" +

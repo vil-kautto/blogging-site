@@ -1,5 +1,7 @@
 package fi.tuni.TemporaryName.webapp;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,8 +9,8 @@ import java.util.Date;
 /**
  * Blog POJO, which stores Blog's object data
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.05.06
- * @since 2020.03.26
+ * @version 2020-05-07
+ * @since 2020-03-26
  */
 @Entity
 @Table(name="Blogs")
@@ -17,14 +19,17 @@ public class Blog {
      * Blog contains id, title, desc and datetime for data and time management
      * id - Automatically incremented value, used for identifying blogs
      * title - Blog's title
-     * desc - Blog's description
+     * body - Blog's description (increased text length to 1024)
      * datetime - automatically generated timestamp
      */
     @Id
     @GeneratedValue
     private int id;
     private String title;
+
+    @Column( length = 2048 )
     private String body;
+
     private String datetime;
     private Comment[] comments;
 

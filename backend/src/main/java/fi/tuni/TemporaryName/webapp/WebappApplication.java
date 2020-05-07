@@ -9,8 +9,8 @@ import javax.annotation.PostConstruct;
 /**
  * Launches the spring application
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.03.26
- * @since 2020.03.26
+ * @version 2020-03-26
+ * @since 2020-03-26
  */
 @SpringBootApplication
 public class WebappApplication {

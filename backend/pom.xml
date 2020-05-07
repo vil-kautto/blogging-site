@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>fi.tuni.TemporaryName</groupId>
 	<artifactId>webapp</artifactId>
-	<version>2020.04.16</version>
-	<name>webapp</name>
-	<description>blogging application for blog hosting</description>
+	<version>2020-05-07</version>
+	<name>temporaryBlog</name>
+	<description>A temporary blog for permanent self-hosting</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -31,12 +31,6 @@
             <version>1.4.199</version>
         </dependency>
 
-        <!--
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-        -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -97,14 +91,10 @@
 				</configuration>
 			</plugin>
 
-
-
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-
 
 		</plugins>
 	</build>

@@ -8,8 +8,8 @@ import java.util.Date;
 
 /**
  * POJO for comments located within the blogs
- * @version 2020.04.16
- * @since 2020.04.16
+ * @version 2020-05-07
+ * @since 2020-04-16
  */
 @Entity
 public class Comment {

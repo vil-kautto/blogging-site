@@ -102,7 +102,7 @@ const EditPopup = (props) => {
             onChange={(event) => setBlogData({ ...blogData, blogText: event.target.value })}
             variant="outlined"
             fullWidth
-            inputProps={{maxLength: 250}}
+            inputProps={{maxLength: 2000}}
             />
         </div>
       </DialogContent>

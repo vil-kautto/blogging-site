@@ -9,8 +9,8 @@ import java.util.List;
  * RestController for blog hosting application
  * Handles incoming requests and manages changes in the database
  * @author Team TemporaryName - Ville Kautto
- * @version 2020.05.06
- * @since 2020.03.26
+ * @version 2020-05-07
+ * @since 2020-03-26
  */
 
 @CrossOrigin
@@ -44,12 +44,11 @@ public class MyRestController {
     }
 
     /**
-     * GenerateTemplate generates 5 example blogs upon startup
-     * Can be controlled on by changing includeTemplate variable at the start of this file
+     * GenerateTemplate generates 3 example blogs upon startup
      */
     public void generateTemplate() {
         blogDatabase.save(new Blog("Example blog 1", "Sample text"));
-        blogDatabase.save(new Blog("Example blog two", "Now with more text"));
+        blogDatabase.save(new Blog("Example blog number 2", "Now with more text"));
         blogDatabase.save(new Blog("I am title", "I am text"));
     }
 
@@ -70,29 +69,29 @@ public class MyRestController {
      */
     @RequestMapping(value = "/blogs", method = RequestMethod.POST)
     public String saveBlog(@RequestBody Blog b) {
-        // Filtering inputs, that have too many characters
+        // Filtering inputs, that contain invalid number of characters
         if(validateString(b.getTitle()) && validateString( b.getBody() )) {
             blogDatabase.save(b);
             System.out.println("New database entry was created");
             return "A new blog was created";
         } else if(!validateString( b.getTitle() )) {
-            System.out.println("Request denied, Title too long");
-            return "Given title is too long!";
+            System.out.println("Request denied, Title length is invalid");
+            return "Given title is too short or too long!";
         } else if(!validateString( b.getBody() )) {
-            System.out.println("Request denied, Body too long");
-            return "Given Blog text is too long!";
+            System.out.println("Request denied, Body length is invalid");
+            return "Given Blog text is too short or too long!";
         } else {
             return "Unknown error";
         }
     }
 
     /**
-     * Checks if given text is too long, returns true when the text is valid
+     * Checks if given text is too long or short, returns true when the text is valid
      * @param text Either the blog's title or body
      * @return The state of validated string
      */
     private boolean validateString(String text) {
-        if(text.length() < 255 ) {
+        if(text.length() < 2040 && text.length() > 0 ) {
             return true;
         } else {
             return false;
@@ -105,7 +104,7 @@ public class MyRestController {
      */
     @RequestMapping(value = "/blogs/{blogId}", method = RequestMethod.POST)
     public String editBlog(@PathVariable int blogId, @RequestBody Blog b) {
-        // Validating inputs, in case there are too many characters
+        // Validating inputs, in case there are invalid number of characters, see above method
         if(validateString(b.getTitle()) && validateString( b.getBody() )) {
 
             // Assign given values after validation and save the edited entry
@@ -118,11 +117,11 @@ public class MyRestController {
             System.out.println("Database entry was changed");
             return "Edited a blog with an id: " + blog.getId();
         } else if(!validateString( b.getTitle() )) {
-            System.out.println("Request denied, Title too long");
-            return "Given title is too long!";
+            System.out.println("Request denied, Title length is invalid");
+            return "Given title is too short or too long!";
         } else if(!validateString( b.getBody() )) {
-            System.out.println("Request denied, Body too long");
-            return "Given Blog text is too long!";
+            System.out.println("Request denied, body length is invalid");
+            return "Given blog text is too short or too long!";
         } else {
             return "Unknown error";
         }
@@ -148,7 +147,7 @@ public class MyRestController {
     public String deleteBlog(@PathVariable int blogId) {
         System.out.println("Deleted a blog with id of  " + blogId);
         blogDatabase.deleteById(blogId);
-        return "deleted a blog with an id: " + blogId;
+        return "Deleted a blog with an id of: " + blogId;
     }
 
 }

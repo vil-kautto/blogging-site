@@ -101,7 +101,7 @@ export default function Popup() {
             rows={5}
             variant="outlined"
             fullWidth
-            inputProps={{maxLength: 250}}
+            inputProps={{maxLength: 2000}}
           />
         </DialogContent>
         <DialogActions>
